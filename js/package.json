@@ -1,0 +1,13 @@
+{
+  "name": "dutch-house-number",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Split Dutch house number strings into number, letter and addition.",
+  "main": "DutchHouseNumber.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Ralph van Kruiselbergen",
+  "private": true,
+  "license": "ISC"
+}
