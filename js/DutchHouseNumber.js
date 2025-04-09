@@ -1,8 +1,8 @@
 export function splitNumberString(streetNumberString = null) {
   const fields = {
-    number: null,
-    addition: null,
-    letter: null,
+    number: '',
+    addition: '',
+    letter: '',
   };
 
   if (!streetNumberString || streetNumberString === '') {
@@ -33,15 +33,26 @@ export function splitNumberString(streetNumberString = null) {
 
     // If part is numeric chars only, it is the addition
     if (/^\d+$/.test(part)) {
-      fields.addition = part;
+      fields.addition += part;
       continue;
     }
 
     // If it is multiple non-numeric chars, it is the addition
     if (/^[a-zA-Z]+$/.test(part)) {
-      fields.addition = part;
+      fields.addition += part;
       continue;
     }
+  }
+
+  // if fields is '', set to null
+  if (fields.addition === '') {
+    fields.addition = null;
+  }
+  if (fields.letter === '') {
+    fields.letter = null;
+  }
+  if (fields.number === '') {
+    fields.number = null;
   }
 
   return fields;

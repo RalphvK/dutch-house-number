@@ -14,7 +14,7 @@ class DutchHouseNumber {
     }
     // explode number
     $exploded = self::explode_number($street_number_string);
-    // if just ne number, it is the number
+    // if just one number, it is the number
     if (count($exploded) == 1) {
       $fields['number'] = $exploded[0];
       return self::return_type($return_type, $fields);
@@ -26,18 +26,18 @@ class DutchHouseNumber {
     for ($i = 1; $i < count($exploded); $i++) {
       $part = $exploded[$i];
       // if part is a single letter, it is the house letter
-      if (strlen($part) == 1 && preg_match('/[a-zA-Z]/', $part)) {
+      if (strlen($part) == 1 && preg_match('/^[a-zA-Z]$/', $part)) {
         $fields['letter'] = $part;
         continue;
       }
       // if part is numeric chars only, it is the addition
       if (preg_match('/^\d+$/', $part)) {
-        $fields['addition'] = $part;
+        $fields['addition'] .= $part;
         continue;
       }
       // if it is multiple non-numeric chars, it is the addition
       if (preg_match('/^[a-zA-Z]+$/', $part)) {
-        $fields['addition'] = $part;
+        $fields['addition'] .= $part;
         continue;
       }
     }

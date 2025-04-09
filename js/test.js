@@ -7,6 +7,7 @@ const testStrings = {
   '2-2a': { number: '2', addition: '2', letter: 'A' },
   '2-Bis A': { number: '2', addition: 'BIS', letter: 'A' },
   '32-a-bis': { number: '32', addition: 'BIS', letter: 'A' },
+  '9-BX04': { number: '9', addition: 'BX04', letter: null }
 };
 
 for (const [string, expected] of Object.entries(testStrings)) {
