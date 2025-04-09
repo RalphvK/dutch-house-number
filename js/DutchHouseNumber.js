@@ -1,4 +1,4 @@
-export function splitNumberString(streetNumberString = null, returnType = 'array') {
+export function splitNumberString(streetNumberString = null) {
   const fields = {
     number: null,
     addition: null,
@@ -6,7 +6,7 @@ export function splitNumberString(streetNumberString = null, returnType = 'array
   };
 
   if (!streetNumberString || streetNumberString === '') {
-    return returnTypeHandler(returnType, fields);
+    return fields;
   }
 
   // Explode number
@@ -15,7 +15,7 @@ export function splitNumberString(streetNumberString = null, returnType = 'array
   // If just one number, it is the number
   if (exploded.length === 1) {
     fields.number = exploded[0];
-    return returnTypeHandler(returnType, fields);
+    return fields;
   }
 
   // ELSE if more than one part, the first part is the number
@@ -44,7 +44,7 @@ export function splitNumberString(streetNumberString = null, returnType = 'array
     }
   }
 
-  return returnTypeHandler(returnType, fields);
+  return fields;
 }
 
 export function explodeNumber(string = null) {
@@ -59,19 +59,4 @@ export function explodeNumber(string = null) {
   }
 
   return additionLetterArray;
-}
-
-export function returnTypeHandler(typeString = 'array', fieldsObject = {}) {
-  switch (typeString) {
-    case 'array':
-      return fieldsObject;
-    case 'stdObject':
-      return { ...fieldsObject };
-    case 'json':
-      return JSON.stringify(fieldsObject);
-    case 'string':
-      return Object.values(fieldsObject).join(';');
-    default:
-      return fieldsObject;
-  }
 }
