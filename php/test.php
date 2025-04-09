@@ -17,6 +17,7 @@ $test_strings = [
     '32-a-bis' => ['number' => '32', 'addition' => 'BIS', 'letter' => 'A'],
     '9-BX04' => ['number' => '9', 'addition' => 'BX04', 'letter' => null],
     '9-B04' => ['number' => '9', 'addition' => '04', 'letter' => 'B'],
+    '9B-BX04' => ['number' => '9', 'addition' => 'BX04', 'letter' => 'B'],
 ];
 
 foreach ($test_strings as $string => $expected) {
