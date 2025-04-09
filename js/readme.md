@@ -4,20 +4,15 @@ The `DutchHouseNumber` module provides utility functions to parse and split Dutc
 
 ## Functions
 
-### `splitNumberString(streetNumberString = null, returnType = 'array')`
+### `splitNumberString(streetNumberString = null)`
 
 Splits a Dutch-style house number string into its components.
 
 #### Parameters:
 - **`streetNumberString`** *(string|null)*: The house number string to split. Defaults to `null`.
-- **`returnType`** *(string)*: The format of the returned data. Supported types:
-  - `'array'` (default): Returns an object.
-  - `'stdObject'`: Returns a plain object.
-  - `'json'`: Returns a JSON string.
-  - `'string'`: Returns a semicolon-separated string.
 
 #### Returns:
-An object, JSON string, or string containing the following fields:
+An object containing the following fields:
 - `number`: The main house number.
 - `addition`: Any additional numeric or alphabetic part.
 - `letter`: A single letter associated with the house number.
@@ -26,7 +21,7 @@ An object, JSON string, or string containing the following fields:
 ```javascript
 import { splitNumberString } from './DutchHouseNumber.js';
 
-const result = splitNumberString('123A-4', 'array');
+const result = splitNumberString('123A-4');
 // Output: { number: '123', addition: '4', letter: 'A' }
 ```
 
@@ -77,8 +72,8 @@ Include the `DutchHouseNumber` module in your project and use its functions to p
 ```javascript
 import { splitNumberString } from './DutchHouseNumber.js';
 
-const parsed = splitNumberString('123B-56', 'json');
-console.log(parsed); // {"number":"123","addition":"56","letter":"B"}
+const parsed = splitNumberString('123B-56');
+console.log(parsed); // { number: '123', addition: '56', letter: 'B' }
 ```
 
 ---
