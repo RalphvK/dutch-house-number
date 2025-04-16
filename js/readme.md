@@ -89,9 +89,3 @@ node test.js
 ```
 
 The script will output the test results, showing whether the expected output matches the actual output for various test cases.
-
----
-
-## License
-
-This project is licensed under the MIT License.
