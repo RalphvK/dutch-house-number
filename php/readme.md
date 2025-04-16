@@ -87,14 +87,7 @@ To validate the functionality of the `DutchHouseNumber` class, you can run the p
 
 ### Command:
 ```bash
-cd php
-php test.php
+php php/test.php
 ```
 
 The script will output the test results, showing whether the expected output matches the actual output for various test cases.
-
----
-
-## License
-
-This project is licensed under the MIT License.
