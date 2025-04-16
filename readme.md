@@ -13,7 +13,7 @@ Dutch house numbers are not just simple numbers. All house numbers start with a 
 
 ## The formatting problem
 
-One of the issues faced in developing applications that deal with Dutch addresses is inconsistent formatting of house numbers. For example, a house number may be represented as "123A4", "123 A 4", "123-A-4", or "123A-4". Even in data from municipalities I have encountered such inconsistencies. This inconsistency makes it difficult to simply split the string into its components.
+One of the issues faced in developing applications that deal with Dutch addresses is inconsistent formatting of house numbers. For example, the same house number may be represented as: "123A4", "123 A 4", "123-A-4", or "123A-4". Even in data provided by municipalities I have encountered such inconsistencies. This inconsistency makes it difficult to simply split the string into its components.
 
 ## What this code does
 
@@ -33,7 +33,7 @@ For specific usage instructions, please refer to the documentation in the respec
 
 In general, I believe the correct formatting for a Dutch house number string to be: `number` `letter` `-` `addition`.
 
-Examples:
+Examples of properly formatted string, with the individual parts listed to the right:
 
 `42` = `{number: 42}`
 
