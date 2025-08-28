@@ -14,7 +14,8 @@ class DutchHouseNumber {
     }
     // explode number
     $exploded = self::explode_number($street_number_string);
-    // if just one number, it is the number
+
+    // IF just one number, it is the number
     if (count($exploded) == 1) {
       $fields['number'] = $exploded[0];
       return self::return_type($return_type, $fields);
@@ -75,6 +76,53 @@ class DutchHouseNumber {
       return implode(';', $fields_array);
     }
     return $fields_array;
+  }
+
+  public static function to_normalised_string($street_number = null)
+  {
+    // if string, check if it's JSON first, then semicolon-separated, then treat as regular string
+    if (is_string($street_number)) {
+      // if JSON string, decode it
+      if (json_decode($street_number) !== null) {
+        $street_number = json_decode($street_number, true);
+      }
+      // if semicolon-separated string, convert to array
+      else if (strpos($street_number, ';') !== false) {
+        $parts = explode(';', $street_number);
+        $street_number = [
+          'number' => $parts[0] ?? null,
+          'addition' => $parts[1] ?? null,
+          'letter' => $parts[2] ?? null
+        ];
+      }
+      // otherwise, split the string into parts
+      else {
+        $street_number = self::split_number_string($street_number, 'array');
+      }
+    }
+    // if stdObject, convert to array
+    else if (is_object($street_number)) {
+      $street_number = (array) $street_number;
+    }
+    // if integer, convert to array format
+    else if (is_int($street_number)) {
+      $street_number = [
+        'number' => $street_number,
+        'addition' => null,
+        'letter' => null
+      ];
+    }
+
+    // generate normalised string - ensure it's always a string
+    $normalised = (string) $street_number['number'];
+    if (!empty($street_number['letter'])) {
+      $normalised .= $street_number['letter'];
+    }
+    if (!empty($street_number['addition'])) {
+      $normalised .= '-' . $street_number['addition'];
+    }
+
+    return $normalised;
   }
 
 }
