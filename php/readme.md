@@ -67,6 +67,42 @@ The formatted data in the specified type.
 
 ---
 
+### `to_normalised_string($street_number = null)`
+
+Converts various input formats of house number data into a standardized string representation.
+
+#### Parameters:
+- **`$street_number`** *(string|array|object|int|null)*: The house number data to normalize. Accepts:
+  - String: Raw house number string, JSON string, or semicolon-separated string
+  - Array: Associative array with 'number', 'addition', and 'letter' keys
+  - Object: stdClass object with house number properties
+  - Integer: Simple house number
+  - null: Returns empty string
+
+#### Returns:
+A normalized string in the format: `{number}{letter}-{addition}` (letter and addition are optional).
+
+#### Examples:
+```php
+// From string input
+$result = DutchHouseNumber::to_normalised_string('123 A 4');
+// Output: "123A-4"
+
+// From array input
+$result = DutchHouseNumber::to_normalised_string(['number' => '123', 'letter' => 'B', 'addition' => '56']);
+// Output: "123B-56"
+
+// From JSON string
+$result = DutchHouseNumber::to_normalised_string('{"number":"123","addition":"56","letter":"B"}');
+// Output: "123B-56"
+
+// From integer
+$result = DutchHouseNumber::to_normalised_string(123);
+// Output: "123"
+```
+
+---
+
 ## Usage
 
 Include the `DutchHouseNumber` class in your project and use its static methods to parse Dutch-style house numbers.
@@ -77,6 +113,10 @@ require_once 'DutchHouseNumber.php';
 
 $parsed = DutchHouseNumber::split_number_string('123B-56', 'json');
 echo $parsed; // {"number":"123","addition":"56","letter":"B"}
+
+// Normalize different input formats
+$normalized = DutchHouseNumber::to_normalised_string('123 B 56');
+echo $normalized; // "123B-56"
 ```
 
 ---

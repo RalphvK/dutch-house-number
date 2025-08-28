@@ -64,16 +64,45 @@ The formatted data in the specified type.
 
 ---
 
+### `toNormalisedString(streetNumber = null)`
+
+Converts a house number object or string into a standardized normalized string format.
+
+#### Parameters:
+- **`streetNumber`** *(string|object|null)*: Either a house number string to be parsed, or an object with parsed components from `splitNumberString`. Defaults to `null`.
+
+#### Returns:
+A normalized string in the format: `{number}{letter}-{addition}` (letter and addition are only included if present).
+
+#### Example:
+```javascript
+import { toNormalisedString } from './DutchHouseNumber.js';
+
+// Using a string input
+const result1 = toNormalisedString('123 A - 4');
+// Output: '123A-4'
+
+// Using an object input
+const parsed = { number: '123', letter: 'B', addition: '56' };
+const result2 = toNormalisedString(parsed);
+// Output: '123B-56'
+```
+
+---
+
 ## Usage
 
 Include the `DutchHouseNumber` module in your project and use its functions to parse Dutch-style house numbers.
 
 #### Example:
 ```javascript
-import { splitNumberString } from './DutchHouseNumber.js';
+import { splitNumberString, toNormalisedString } from './DutchHouseNumber.js';
 
 const parsed = splitNumberString('123B-56');
 console.log(parsed); // { number: '123', addition: '56', letter: 'B' }
+
+const normalized = toNormalisedString('123 B - 56');
+console.log(normalized); // '123B-56'
 ```
 
 ---
