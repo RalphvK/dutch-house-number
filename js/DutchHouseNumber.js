@@ -1,3 +1,8 @@
+/**
+ * Splits a street number string into its components (number, addition, letter)
+ * @param {string} streetNumberString - The street number string to split
+ * @returns {object} Object containing number, addition, and letter properties
+ */
 export function splitNumberString(streetNumberString = null) {
   const fields = {
     number: '',
@@ -61,6 +66,11 @@ export function splitNumberString(streetNumberString = null) {
   return fields;
 }
 
+/**
+ * Explodes a number string into its constituent parts by splitting on various delimiters
+ * @param {string} string - The string to explode into parts
+ * @returns {Array<string>} Array of string parts after splitting and processing
+ */
 export function explodeNumber(string = null) {
   string = (string || '').toUpperCase().trim();
   string = string.replace(/^[-\/]+|[-\/]+$/g, ''); // Trim - and / from start and end
