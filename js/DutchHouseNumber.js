@@ -80,14 +80,15 @@ export function explodeNumber(string = null) {
  * @param {string, object} streetNumber - can be both the output object from splitNumberString or any string, which will first be run through splitNumberString
  * @returns {string} - the normalised string
  */
-export function toNormalisedString(streetNumber = null)
-{
+export function toNormalisedString(streetNumber = null) {
   // if string, split it into parts
   if (typeof streetNumber === 'string') {
     streetNumber = splitNumberString(streetNumber);
-  // else assert it is an Object
+    // else assert it is an Object
   } else if (typeof streetNumber !== 'object' || !streetNumber.number) {
-    console.error('Incorrect type given in toNormalisedString. Must be string or object. The object must have at least a number property.');
+    console.error(
+      'Incorrect type given in toNormalisedString. Must be string or object. The object must have at least a number property.'
+    );
     return null;
   }
 
