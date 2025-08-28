@@ -95,7 +95,7 @@ export function toNormalisedString(streetNumber = null) {
   if (typeof streetNumber === 'string') {
     streetNumber = splitNumberString(streetNumber);
     // else assert it is an Object
-  } else if (typeof streetNumber !== 'object' || !streetNumber.number) {
+  } else if (typeof streetNumber !== 'object' || !streetNumber || !streetNumber.number) {
     console.error(
       'Incorrect type given in toNormalisedString. Must be string or object. The object must have at least a number property.'
     );
