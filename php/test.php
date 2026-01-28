@@ -27,11 +27,11 @@ $test_strings = [
         'letter' => null,
         'normalised_string' => '2-2'
     ],
-    '2-2a' => [
-        'number' => '2',
-        'addition' => '2',
-        'letter' => 'A',
-        'normalised_string' => '2A-2'
+    '47K-304' => [
+        'number' => '47',
+        'addition' => '304',
+        'letter' => 'K',
+        'normalised_string' => '47K-304'
     ],
     '2-Bis A' => [
         'number' => '2',
