@@ -23,6 +23,13 @@ class DutchHouseNumber {
 
     // ELSE if more than one part, the first part is the number
     $fields['number'] = $exploded[0];
+
+    // if total part count is 2, AND the pattern matches DDD(any number of digits) followed by a - (hypen) and then a single letter, then the second part is the addition, the first part is the number, then return
+    if (count($exploded) == 2 && preg_match('/^\d+-[a-zA-Z]$/', $street_number_string)) {
+      $fields['addition'] = $exploded[1];
+      return self::return_type($return_type, $fields);
+    }
+
     // iterate through other parts
     for ($i = 1; $i < count($exploded); $i++) {
       $part = $exploded[$i];
@@ -83,7 +90,7 @@ class DutchHouseNumber {
     // if string, check if it's JSON first, then semicolon-separated, then treat as regular string
     if (is_string($street_number)) {
       // if JSON string, decode it
-      if (json_decode($street_number) !== null) {
+      if (strpos($street_number, '{') !== false && json_decode($street_number) !== null) {
         $street_number = json_decode($street_number, true);
       }
       // if semicolon-separated string, convert to array

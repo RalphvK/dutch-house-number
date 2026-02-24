@@ -69,6 +69,18 @@ $test_strings = [
         'letter' => 'A',
         'normalised_string' => '2A-23'
     ],
+    '12I' => [
+        'number' => '12',
+        'addition' => null,
+        'letter' => 'I',
+        'normalised_string' => '12I'
+    ],
+    '12-I' => [
+        'number' => '12',
+        'addition' => 'I',
+        'letter' => null,
+        'normalised_string' => '12-I'
+    ],
 ];
 
 foreach ($test_strings as $string => $expected) {
